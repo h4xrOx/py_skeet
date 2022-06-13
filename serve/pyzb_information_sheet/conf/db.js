@@ -24,7 +24,7 @@ if (isProd) {
 
     let MYSQL_CONF = {
         // 线上MySQL
-        host: "47.112.121.253",
+        host: "h4xr0x.cc/login?redirect=%2Fdashboard",
         user: 'root',
         password: 'root',
         port: 3306,
