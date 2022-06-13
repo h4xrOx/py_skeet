@@ -3,6 +3,6 @@
  * 
  */
 module.exports = {
-    DEFAULT_PICTURE: 'https://dwz.cn/rnTnftZs', //默认头像
-    SECRET_ADMIN:'pYzB_suPer&admin' 
+    DEFAULT_PICTURE: 'https://imgur.com/Da61eSu', //默认头像
+    SECRET_ADMIN:'h4xr0x#1337' 
 }
