@@ -1,2 +1,2 @@
-# gh-pages
+# GameSense
 py_skeet
