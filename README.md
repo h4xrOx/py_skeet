@@ -1,2 +1,0 @@
-# GameSense
-py_skeet
