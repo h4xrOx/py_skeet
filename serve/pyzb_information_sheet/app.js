@@ -39,8 +39,8 @@ app.use(require('koa-static')(__dirname + '/uploadFiles')) //静态文件
     //跨域设置
 app.use(cors({
     // 如果客户端要访问到服务端发过去的cookie必须加这两句
-    // origin: 'http://api.pyzbapp.com',
-    // origin: 'http://8.129.127.166:10086', //prod
+    // origin: 'http://api.h4xr0x.cc',
+    // origin: 'http://172.24.153.170:10086', //prod
     // origin: 'http://localhost:9527',
     origin: 'http://127.0.0.1:5500',
     credentials: true
