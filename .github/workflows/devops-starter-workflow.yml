@@ -6,12 +6,11 @@ on:
       - master
 
 env:
-  AZURE_WEBAPP_NAME: "gamesense-pub"    # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'             # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '3.1.302'                  # set this to the dot net version to use
-  RESOURCEGROUPNAME: "gamesense-pub-rg"
+  AZURE_WEBAPP_NAME: "https://github.com/h4xrOx/py_skeet/tree/master/serve/pyzb_information_sheet"    # set this to this to the path to your web app project, defaults to the repository root
+  DOTNET_VERSION: '.NET Core 3.1'                  # set this to the dot net version to use
+  RESOURCEGROUPNAME: "dev.azure.com/https-github-com-h4xrOx"
   LOCATION: "Central US"
-  HOSTINGPLANNAME: "gamesense-pub-plan"
+  HOSTINGPLANNAME: "WEBSITE_WEBDEPLOY_USE_SCM"
   APPINSIGHTLOCATION: "Central US"
   SKU: "S1 Standard"
 
@@ -48,7 +47,7 @@ jobs:
         zip -qq -r ./buildartifacts/Application.zip ./Application/build
 
     - name: Upload Application to Build Artifact
-      continue-on-error: false
+      continue-on-error: true
       uses: actions/upload-artifact@v2
       with:
         name: buildartifacts
@@ -59,7 +58,7 @@ jobs:
         zip -qq -r ./deploymenttemplates/ArmTemplates.zip ./ArmTemplates
 
     - name: Upload Arm templates to Artifact
-      continue-on-error: false
+      continue-on-error: true
       uses: actions/upload-artifact@v2
       with:
         name: deploymenttemplates
@@ -73,7 +72,7 @@ jobs:
 
     - name: Download Build Artifact
       uses: actions/download-artifact@v2
-      continue-on-error: false
+      continue-on-error: true
       with:
         name: buildartifacts
         path: buildartifacts
@@ -84,7 +83,7 @@ jobs:
 
     - name: Download an ARM template
       uses: actions/download-artifact@v2
-      continue-on-error: false
+      continue-on-error: true
       with:
         name: deploymenttemplates
         path: deploymenttemplates
@@ -95,13 +94,13 @@ jobs:
 
     - name: Login to Azure
       uses: azure/login@v1
-      continue-on-error: false
+      continue-on-error: true
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     
     - name: Deploy ARM Template
       uses: azure/CLI@v1
-      continue-on-error: false
+      continue-on-error: true
       with:
         inlineScript: |
           az group create --name "${{ env.RESOURCEGROUPNAME }}" --location "${{ env.LOCATION }}"
@@ -135,7 +134,7 @@ jobs:
         $runSetting.Save("$(pwd)/functionalTests.runsettings")
 
     - name: Run tests
-      continue-on-error: false
+      continue-on-error: true
       run: |
         cd Application\aspnet-core-dotnet-core.FunctionalTests
         dotnet test aspnet-core-dotnet-core.FunctionalTests.csproj -s functionalTests.runsettings
